@@ -119,7 +119,7 @@ class Trader(object):
                 "profitMargin": profit_margin
             }
             self.sell(coin_pair, current_sell_price, sell_stats)
-        elif "sell" in self.pause_params and profit_margin <= self.pause_params["sell"]["profitMarginThreshold"] < 0:
+        elif "sell" in self.pause_params and profit_margin <= self.pause_params["sell"]["profitMarginThreshold"] != 0:
             self.Messenger.print_pause(coin_pair, [profit_margin, rsi], self.pause_params["sell"]["pauseTime"], "sell")
             self.Database.pause_sell(coin_pair)
         else:
